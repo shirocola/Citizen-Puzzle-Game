@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jigsaw Puzzle Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+  <div id="game-container">
+    <div id="start-screen">
+      <h1 id="start-text">Touch to Start</h1>
+    </div>
+    <div id="game-screen" class="hidden">
+      <div id="header">
+        <div id="time">Time: <span id="time-count">120</span></div>
+        <div id="score">Score: <span id="score-count">0</span></div>
+      </div>
+      <div id="puzzle-grid"></div>
+      <div id="piece-pile"></div>
+    </div>
+    <div id="result-screen" class="hidden">
+      <h1 id="result-message"></h1>
+      <button id="restart-button">Restart</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
