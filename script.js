@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       pieces.push(i);
     }
 
-    // Shuffle the pieces array
     pieces.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < 12; i++) {
@@ -86,59 +85,65 @@ document.addEventListener('DOMContentLoaded', () => {
       piece.style.backgroundImage = `url(${currentImage})`;
       piece.style.backgroundPosition = `${(pieces[i] % 4) * -100}px ${Math.floor(pieces[i] / 4) * -100}px`;
       piece.dataset.order = pieces[i];
-      piece.style.position = 'absolute';
-      piece.style.left = `${10 + i * 10}px`;
-      piece.style.top = `${10 + i * 10}px`;
+      piece.draggable = true;
       piecePile.appendChild(piece);
+
+      piece.addEventListener('dragstart', onDragStart, false);
+      piece.addEventListener('dragend', onDragEnd, false);
     }
 
-    // Apply interact.js draggable and dropzone features
-    interact('.puzzle-piece').draggable({
-      inertia: true,
-      modifiers: [
-        interact.modifiers.restrictRect({
-          restriction: '#game-container',
-          endOnly: true
-        })
-      ],
-      autoScroll: true,
-      listeners: {
-        move: dragMoveListener,
-        end(event) {
-          const target = event.target;
-          target.style.transform = 'translate(0px, 0px)';
-          target.removeAttribute('data-x');
-          target.removeAttribute('data-y');
-        }
-      }
-    });
-
-    interact('.grid-cell').dropzone({
-      accept: '.puzzle-piece',
-      overlap: 0.75,
-      ondrop: function (event) {
-        const draggableElement = event.relatedTarget;
-        const dropzoneElement = event.target;
-        if (dropzoneElement.dataset.order === draggableElement.dataset.order) {
-          dropzoneElement.appendChild(draggableElement);
-          draggableElement.style.position = 'static';
-          draggableElement.draggable = false;
-          score++;
-          updateScore();
-          checkCompletion();
-        }
-      }
+    const cells = document.querySelectorAll('.grid-cell');
+    cells.forEach(cell => {
+      cell.addEventListener('dragenter', onDragEnter, false);
+      cell.addEventListener('dragover', onDragOver, false);
+      cell.addEventListener('dragleave', onDragLeave, false);
+      cell.addEventListener('drop', onDrop, false);
     });
   }
 
-  function dragMoveListener(event) {
-    const target = event.target;
-    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+  function onDragStart(e) {
+    e.dataTransfer.setData('text', e.target.dataset.order);
+    e.dataTransfer.effectAllowed = 'move';
+  }
 
-    target.style.transform = `translate(${x}px, ${y}px)`;
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
+  function onDragOver(e) {
+    if (e.preventDefault) {
+      e.preventDefault();
+    }
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
+
+  function onDragEnter(e) {
+    this.classList.add('drag--hover');
+  }
+
+  function onDragLeave(e) {
+    this.classList.remove('drag--hover');
+  }
+
+  function onDrop(e) {
+    if (e.stopPropagation) e.stopPropagation();
+
+    const draggedOrder = e.dataTransfer.getData('text');
+    const targetOrder = this.dataset.order;
+
+    if (draggedOrder === targetOrder) {
+      const draggedElement = document.querySelector(`.puzzle-piece[data-order='${draggedOrder}']`);
+      this.appendChild(draggedElement);
+      score++;
+      updateScore();
+      checkCompletion();
+    }
+
+    this.classList.remove('drag--hover');
+    return false;
+  }
+
+  function onDragEnd(e) {
+    [].forEach.call(document.querySelectorAll('.grid-cell'), function (cell) {
+      cell.classList.remove('drag--hover');
+    });
   }
 
   function startTimer() {
@@ -174,3 +179,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resultMessage.textContent = score === 12 ? 'Congratulations!' : 'Game Over!';
   }
 });
+
+// DnD polyfill for touch screen support
+(function(DragDropTouch) {
+  if ("ontouchstart" in document) {
+    var d = document,
+      ts = this._touchstart.bind(this),
+      tm = this._touchmove.bind(this),
+      te = this._touchend.bind(this);
+    d.addEventListener("touchstart", ts);
+    d.addEventListener("touchmove", tm);
+    d.addEventListener("touchend", te);
+    d.addEventListener("touchcancel", te);
+  }
+})(DragDropTouch || (DragDropTouch = {}));
