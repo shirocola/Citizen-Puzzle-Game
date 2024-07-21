@@ -24,6 +24,9 @@
         }, 3000); // Redirect to discount page after 3 seconds
       } else {
         resultMessage.textContent = 'YOU LOSE';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 3000); // Redirect to start page after 3 seconds
       }
 
       document.getElementById('restart-button').addEventListener('click', () => {

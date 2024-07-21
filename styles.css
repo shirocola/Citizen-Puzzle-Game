@@ -20,6 +20,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 #start-text {
@@ -61,20 +62,18 @@ body, html {
   margin-top: 20px; /* Reduced margin to control the gap between "Better starts now" and "Time" */
 }
 
-/* Time label styling */
 #time {
   font-size: 32px;
   color: white; /* Make the "Time" text white */
   margin-right: 10px; /* Add some space between "Time" and the oval */
 }
 
-/* Time count styling with an oval background */
 #time-count {
   background: white;
   color: black;
   padding: 10px 40px; /* Adjust the padding for longer horizontal and shorter vertical */
   border-radius: 30px;
-  font-size: 32px; /* Adjust the size to match the "Time" text */
+  font-size: 32px;
 }
 
 #game-screen {
@@ -82,29 +81,43 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 60px; /* Adjust this value to suit the space between the banner and game grid */
+  margin-top: 60px;
+  width: 100%;
+}
+
+#puzzle-grid-wrapper, #piece-pile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #puzzle-grid {
   display: grid;
-  grid-template-columns: repeat(3, 150px);
-  grid-template-rows: repeat(4, 150px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 1px;
   background-color: transparent;
   touch-action: none;
+  width: 450px;
+  height: 600px;
   margin: 20px auto;
 }
 
 .grid-cell {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .puzzle-piece {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   background-size: 450px 600px;
+  background-repeat: no-repeat;
   cursor: pointer;
   transition: transform 0.3s;
   touch-action: none;
@@ -115,13 +128,25 @@ body, html {
   opacity: 0.5;
 }
 
+#piece-pile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
 #piece-pile {
   display: grid;
-  grid-template-columns: repeat(6, 150px);
-  grid-template-rows: repeat(2, 150px);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 1px;
-  margin-top: 20px;
+  background-color: transparent;
+  max-width: 100%; /* Ensure it doesn't exceed the container width */
+  height: 200px;
   touch-action: none;
+  margin: 0 auto; /* Centering the piece-pile */
+  justify-content: center; /* Center the grid */
 }
 
 /* Responsive styles */
@@ -144,13 +169,13 @@ body, html {
   }
 
   #puzzle-grid {
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(4, 100px);
+    width: 300px;
+    height: 400px;
   }
 
   .grid-cell, .puzzle-piece {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
   }
 
   .puzzle-piece {
@@ -158,8 +183,8 @@ body, html {
   }
 
   #piece-pile {
-    grid-template-columns: repeat(6, 100px);
-    grid-template-rows: repeat(2, 100px);
+    width: 400px;
+    height: 100px;
   }
 }
 
@@ -182,13 +207,13 @@ body, html {
   }
 
   #puzzle-grid {
-    grid-template-columns: repeat(3, 80px);
-    grid-template-rows: repeat(4, 80px);
+    width: 240px;
+    height: 320px;
   }
 
   .grid-cell, .puzzle-piece {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
   }
 
   .puzzle-piece {
@@ -196,35 +221,45 @@ body, html {
   }
 
   #piece-pile {
-    grid-template-columns: repeat(6, 80px);
-    grid-template-rows: repeat(2, 80px);
+    width: 320px;
+    height: 80px;
   }
 }
 
-/* Discount page styles */
-#discount-container {
-  text-align: center;
-  color: white;
-  background-color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+@media (max-width: 480px) {
+  #banner h1 {
+    font-size: 20px;
+  }
 
-#discount-container h1 {
-  font-size: 36px;
-  margin: 0;
-  padding-top: 50px; /* Adjust to match the image */
-}
+  #banner p {
+    font-size: 10px;
+  }
 
-#discount-container p {
-  font-size: 16px;
-  margin: 10px 0;
-}
+  #time {
+    font-size: 16px;
+  }
 
-#discount-container h2 {
-  font-size: 72px;
-  margin: 20px 0;
+  #time-count {
+    font-size: 16px;
+    padding: 5px 15px;
+  }
+
+  #puzzle-grid {
+    width: 180px;
+    height: 240px;
+  }
+
+  .grid-cell, .puzzle-piece {
+    width: 100%;
+    height: 100%;
+  }
+
+  .puzzle-piece {
+    background-size: 180px 240px;
+  }
+
+  #piece-pile {
+    width: 240px;
+    height: 60px;
+  }
 }

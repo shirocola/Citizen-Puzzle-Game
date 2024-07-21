@@ -27,25 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
     currentImage = images[Math.floor(Math.random() * images.length)];
     piecePile.innerHTML = '';
     puzzleGrid.innerHTML = '';
+
+    const cellWidth = puzzleGrid.clientWidth / 3;
+    const cellHeight = puzzleGrid.clientHeight / 4;
+
     for (let i = 0; i < 12; i++) {
       const cell = document.createElement('div');
       cell.classList.add('grid-cell');
       const img = document.createElement('div');
       img.style.backgroundImage = `url(${currentImage})`;
-      img.style.backgroundPosition = `${(i % 3) * -150}px ${Math.floor(i / 3) * -150}px`;
-      img.style.width = '150px';
-      img.style.height = '150px';
-      img.style.backgroundSize = '450px 600px';
+      img.style.backgroundPosition = `${(i % 3) * -cellWidth}px ${Math.floor(i / 3) * -cellHeight}px`;
+      img.style.width = `${cellWidth}px`;
+      img.style.height = `${cellHeight}px`;
+      img.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
       cell.appendChild(img);
       puzzleGrid.appendChild(cell);
     }
     setTimeout(() => {
       startTimer();
-      createPuzzle();
+      createPuzzle(cellWidth, cellHeight);
     }, 3000);
   }
 
-  function createPuzzle() {
+  function createPuzzle(cellWidth, cellHeight) {
     puzzleGrid.innerHTML = '';
     piecePile.innerHTML = '';
 
@@ -60,12 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const cell = document.createElement('div');
       cell.classList.add('grid-cell');
       cell.dataset.order = i;
+      cell.style.width = `${cellWidth}px`;
+      cell.style.height = `${cellHeight}px`;
       puzzleGrid.appendChild(cell);
 
       const piece = document.createElement('div');
       piece.classList.add('puzzle-piece');
       piece.style.backgroundImage = `url(${currentImage})`;
-      piece.style.backgroundPosition = `${(pieces[i] % 3) * -150}px ${Math.floor(pieces[i] / 3) * -150}px`;
+      piece.style.backgroundPosition = `${(pieces[i] % 3) * -cellWidth}px ${Math.floor(pieces[i] / 3) * -cellHeight}px`;
+      piece.style.width = `${cellWidth}px`;
+      piece.style.height = `${cellHeight}px`;
+      piece.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
       piece.dataset.order = pieces[i];
       piece.draggable = true;
       piecePile.appendChild(piece);
@@ -308,7 +317,7 @@ var DragDropTouch = (function() {
       if (e && e.touches) {
         e = e.touches[0];
       }
-      return { x: page ? e.pageX : e.clientX, y: page ? e.pageY : e.clientY };
+      return { x: page ? e.pageX : e.clientX, y: page ? e.clientY : e.clientY };
     },
     _getDelta: function(e) {
       var p = this._getPoint(e);

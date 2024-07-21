@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jigsaw Puzzle Game</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  <script src="libs/interact.min.js"></script>
+  <script src="libs/Sortable.min.js"></script>
 </head>
 <body>
   <div id="game-container">
@@ -19,8 +19,12 @@
         <div id="time">TIME:</div>
         <div id="time-count">120</div>
       </div>
-      <div id="puzzle-grid"></div>
-      <div id="piece-pile"></div>
+      <div id="puzzle-grid-wrapper">
+        <div id="puzzle-grid"></div>
+      </div>
+      <div id="piece-pile-wrapper">
+        <div id="piece-pile"></div>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>
