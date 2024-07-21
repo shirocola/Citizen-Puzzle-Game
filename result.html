@@ -1,3 +1,4 @@
+<!-- result.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,6 @@
 <body>
   <div id="result-container">
     <h1 id="result-message"></h1>
-    <button id="restart-button">Restart</button>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -18,9 +18,12 @@
       const resultMessage = document.getElementById('result-message');
 
       if (result === 'win') {
-        resultMessage.textContent = 'Congratulations!';
+        resultMessage.textContent = 'YOU WIN';
+        setTimeout(() => {
+          window.location.href = 'discount.html';
+        }, 3000); // Redirect to discount page after 3 seconds
       } else {
-        resultMessage.textContent = 'Game Over!';
+        resultMessage.textContent = 'YOU LOSE';
       }
 
       document.getElementById('restart-button').addEventListener('click', () => {

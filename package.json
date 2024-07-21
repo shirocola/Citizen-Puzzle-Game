@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/shirocola/puzzle#readme",
   "dependencies": {
-    "dracula": "^0.0.3"
+    "dracula": "^0.0.3",
+    "interactjs": "^1.10.27",
+    "sortablejs": "^1.15.2"
   }
 }

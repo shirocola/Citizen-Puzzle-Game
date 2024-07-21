@@ -33,10 +33,48 @@ body, html {
   }
 }
 
+/* Banner styling for CITIZEN and Better starts now */
+#banner {
+  text-align: center;
+  margin-bottom: 0; /* Removed bottom margin */
+  position: relative;
+  top: 0; /* Adjusted to position it lower from the top */
+  width: 100%;
+}
+
+#banner h1 {
+  margin: 0;
+  font-size: 72px;
+  margin-bottom: 10px; /* Added margin to create a gap between CITIZEN and Better starts now */
+}
+
+#banner p {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Header styling for Time */
 #header {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 20px; /* Reduced margin to control the gap between "Better starts now" and "Time" */
+}
+
+/* Time label styling */
+#time {
+  font-size: 32px;
+  color: white; /* Make the "Time" text white */
+  margin-right: 10px; /* Add some space between "Time" and the oval */
+}
+
+/* Time count styling with an oval background */
+#time-count {
+  background: white;
+  color: black;
+  padding: 10px 40px; /* Adjust the padding for longer horizontal and shorter vertical */
+  border-radius: 30px;
+  font-size: 32px; /* Adjust the size to match the "Time" text */
 }
 
 #game-screen {
@@ -44,6 +82,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 60px; /* Adjust this value to suit the space between the banner and game grid */
 }
 
 #puzzle-grid {
@@ -53,7 +92,7 @@ body, html {
   gap: 1px;
   background-color: transparent;
   touch-action: none;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .grid-cell {
@@ -83,4 +122,109 @@ body, html {
   gap: 1px;
   margin-top: 20px;
   touch-action: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  #banner h1 {
+    font-size: 28px;
+  }
+
+  #banner p {
+    font-size: 14px;
+  }
+
+  #time {
+    font-size: 20px;
+  }
+
+  #time-count {
+    font-size: 20px;
+    padding: 5px 30px;
+  }
+
+  #puzzle-grid {
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(4, 100px);
+  }
+
+  .grid-cell, .puzzle-piece {
+    width: 100px;
+    height: 100px;
+  }
+
+  .puzzle-piece {
+    background-size: 300px 400px;
+  }
+
+  #piece-pile {
+    grid-template-columns: repeat(6, 100px);
+    grid-template-rows: repeat(2, 100px);
+  }
+}
+
+@media (max-width: 768px) {
+  #banner h1 {
+    font-size: 24px;
+  }
+
+  #banner p {
+    font-size: 12px;
+  }
+
+  #time {
+    font-size: 18px;
+  }
+
+  #time-count {
+    font-size: 18px;
+    padding: 5px 20px;
+  }
+
+  #puzzle-grid {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(4, 80px);
+  }
+
+  .grid-cell, .puzzle-piece {
+    width: 80px;
+    height: 80px;
+  }
+
+  .puzzle-piece {
+    background-size: 240px 320px;
+  }
+
+  #piece-pile {
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: repeat(2, 80px);
+  }
+}
+
+/* Discount page styles */
+#discount-container {
+  text-align: center;
+  color: white;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#discount-container h1 {
+  font-size: 36px;
+  margin: 0;
+  padding-top: 50px; /* Adjust to match the image */
+}
+
+#discount-container p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+#discount-container h2 {
+  font-size: 72px;
+  margin: 20px 0;
 }

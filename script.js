@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const gameScreen = document.getElementById('game-screen');
-  const resultScreen = document.getElementById('result-screen');
   const puzzleGrid = document.getElementById('puzzle-grid');
   const piecePile = document.getElementById('piece-pile');
   const timeCount = document.getElementById('time-count');
-  const scoreCount = document.getElementById('score-count');
 
   const images = [ 
-    'assets/watch1.png', 
-    'assets/watch1.png', 
-    'assets/watch1.png', 
-    'assets/watch1.png' 
+    'assets/watch1ja.jpg', 
+    'assets/watch2ja.jpg', 
+    'assets/watch3ja.jpg', 
+    'assets/watch4ja.jpg' 
   ];
 
   let score = 0;
@@ -19,10 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentImage;
 
   function startGame() {
-    gameScreen.classList.remove('hidden');
     score = 0;
     timeLeft = 120;
-    updateScore();
     updateTime();
     showRandomImage();
   }
@@ -118,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const draggedElement = document.querySelector(`.puzzle-piece[data-order='${draggedOrder}']`);
       this.appendChild(draggedElement);
       score++;
-      updateScore();
       checkCompletion();
     }
 
@@ -142,10 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gameOver();
       }
     }, 1000);
-  }
-
-  function updateScore() {
-    scoreCount.textContent = score;
   }
 
   function updateTime() {
