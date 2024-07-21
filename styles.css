@@ -2,24 +2,24 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   background-color: #000;
-  -webkit-user-select: none;  /* Prevent text selection on touch devices */
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#game-container {
+#start-container, #game-container, #result-container {
   text-align: center;
   color: white;
-}
-
-.hidden {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #start-text {
@@ -33,32 +33,43 @@ body, html {
   }
 }
 
+#header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#game-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #puzzle-grid {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(4, 150px);
   gap: 1px;
-  margin: 20px auto;
-  background-color: #007acc;
-  position: relative;
-  touch-action: none;  /* Prevent default touch behaviors */
+  background-color: transparent;
+  touch-action: none;
+  margin: 0 auto;
 }
 
 .grid-cell {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border: 1px solid white;
 }
 
 .puzzle-piece {
-  width: 100px;
-  height: 100px;
-  background-size: 400px 300px;
+  width: 150px;
+  height: 150px;
+  background-size: 450px 600px;
   cursor: pointer;
   transition: transform 0.3s;
-  position: absolute;
-  touch-action: none;  /* Prevent default touch behaviors */
-  user-select: none;   /* Prevent text selection on touch devices */
+  touch-action: none;
+  user-select: none;
 }
 
 .dragging {
@@ -66,9 +77,10 @@ body, html {
 }
 
 #piece-pile {
-  position: relative;
-  width: 400px;
-  height: 300px;
-  margin: 20px auto;
-  touch-action: none;  /* Prevent default touch behaviors */
+  display: grid;
+  grid-template-columns: repeat(6, 150px);
+  grid-template-rows: repeat(2, 150px);
+  gap: 1px;
+  margin-top: 20px;
+  touch-action: none;
 }

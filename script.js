@@ -1,20 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const startScreen = document.getElementById('start-screen');
-  const startText = document.getElementById('start-text');
   const gameScreen = document.getElementById('game-screen');
   const resultScreen = document.getElementById('result-screen');
   const puzzleGrid = document.getElementById('puzzle-grid');
   const piecePile = document.getElementById('piece-pile');
   const timeCount = document.getElementById('time-count');
   const scoreCount = document.getElementById('score-count');
-  const resultMessage = document.getElementById('result-message');
-  const restartButton = document.getElementById('restart-button');
 
   const images = [ 
-    'assets/citizen_watch.jpg', 
-    'assets/images.jpeg', 
-    'assets/samsung.jpg', 
-    'assets/watch.jpeg' 
+    'assets/watch1.png', 
+    'assets/watch1.png', 
+    'assets/watch1.png', 
+    'assets/watch1.png' 
   ];
 
   let score = 0;
@@ -22,17 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let timer;
   let currentImage;
 
-  function addClickListener(element, handler) {
-    element.addEventListener('click', handler);
-    element.addEventListener('touchstart', handler);
-  }
-
-  addClickListener(startText, startGame);
-  addClickListener(restartButton, startGame);
-
   function startGame() {
-    startScreen.classList.add('hidden');
-    resultScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     score = 0;
     timeLeft = 120;
@@ -50,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.classList.add('grid-cell');
       const img = document.createElement('div');
       img.style.backgroundImage = `url(${currentImage})`;
-      img.style.backgroundPosition = `${(i % 4) * -100}px ${Math.floor(i / 4) * -100}px`;
-      img.style.width = '100px';
-      img.style.height = '100px';
-      img.style.backgroundSize = '400px 300px';
+      img.style.backgroundPosition = `${(i % 3) * -150}px ${Math.floor(i / 3) * -150}px`;
+      img.style.width = '150px';
+      img.style.height = '150px';
+      img.style.backgroundSize = '450px 600px';
       cell.appendChild(img);
       puzzleGrid.appendChild(cell);
     }
@@ -83,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const piece = document.createElement('div');
       piece.classList.add('puzzle-piece');
       piece.style.backgroundImage = `url(${currentImage})`;
-      piece.style.backgroundPosition = `${(pieces[i] % 4) * -100}px ${Math.floor(pieces[i] / 4) * -100}px`;
+      piece.style.backgroundPosition = `${(pieces[i] % 3) * -150}px ${Math.floor(pieces[i] / 3) * -150}px`;
       piece.dataset.order = pieces[i];
       piece.draggable = true;
       piecePile.appendChild(piece);
@@ -169,15 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function checkCompletion() {
     if (score === 12) {
       clearInterval(timer);
-      gameOver();
+      gameOver('win');
     }
   }
 
-  function gameOver() {
+  function gameOver(result) {
     gameScreen.classList.add('hidden');
-    resultScreen.classList.remove('hidden');
-    resultMessage.textContent = score === 12 ? 'Congratulations!' : 'Game Over!';
+    window.location.href = `result.html?result=${result}`;
   }
+
+  startGame();
 });
 
 // DnD polyfill for touch screen support
