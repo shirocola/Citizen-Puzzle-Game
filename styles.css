@@ -13,7 +13,7 @@ body, html {
   align-items: center;
 }
 
-#start-container, #game-container, #result-container {
+#start-container, #game-container, #result-container, #discount-container {
   text-align: center;
   color: white;
   display: flex;
@@ -262,4 +262,32 @@ body, html {
     width: 240px;
     height: 60px;
   }
+}
+
+/* Discount page styles */
+#discount-container {
+  text-align: center;
+  color: white;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#discount-container h1 {
+  font-size: 36px;
+  margin: 0;
+  padding-top: 50px;
+}
+
+#discount-container p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+#discount-container h2 {
+  font-size: 72px;
+  margin: 20px 0;
 }
