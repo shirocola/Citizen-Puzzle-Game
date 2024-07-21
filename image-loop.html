@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Loop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="image-loop">
+    <img id="loop-image" src="" alt="Image Loop">
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = [
+        'assets/watch1ja.jpg',
+        'assets/watch2ja.jpg',
+        'assets/watch3ja.jpg',
+        'assets/watch4ja.jpg'
+      ];
+
+      let currentImageIndex = 0;
+      const loopImage = document.getElementById('loop-image');
+
+      function showNextImage() {
+        loopImage.src = images[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+      }
+
+      showNextImage();
+      setInterval(showNextImage, 5000);
+
+      loopImage.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -11,8 +11,14 @@
     <h1 id="start-text">Touch to Start</h1>
   </div>
   <script>
-    document.getElementById('start-text').addEventListener('click', () => {
-      window.location.href = 'game.html';
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.location.href = 'image-loop.html';
+      }, 3000);
+
+      document.getElementById('start-text').addEventListener('click', () => {
+        window.location.href = 'game.html';
+      });
     });
   </script>
 </body>
