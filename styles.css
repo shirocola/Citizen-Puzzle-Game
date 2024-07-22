@@ -26,12 +26,12 @@ body, html {
 }
 
 #start-text {
-  font-size: 2vw;
-  color: white;
+  font-size: 3.5vw; /* Adjusted size for TOUCH TO START */
+  color: black;
   padding: 1vw 2vw;
   border: 2px solid white;
   border-radius: 2vw;
-  background-color: transparent;
+  background-color: white;
   animation: blink 1s step-start infinite;
   cursor: pointer;
   font-weight: bold;
@@ -54,15 +54,15 @@ body, html {
 
 #banner h1 {
   margin: 0;
-  font-size: 4vw;
-  margin-bottom: 1vw;
+  font-size: 8vw; /* Adjusted size for CITIZEN */
+  margin-bottom: 3.5vw; /* Increased space for BETTER STARTS NOW */
   font-weight: bold;
 }
 
-#banner p {
+#banner h2 {
   margin: 0;
-  font-size: 2vw;
-  margin-bottom: 2vw;
+  font-size: 4vw; /* Adjusted size for BETTER STARTS NOW */
+  margin-bottom: 3vw;
   font-weight: normal;
 }
 
@@ -164,11 +164,11 @@ body, html {
 /* Responsive styles */
 @media (max-width: 1024px) {
   #banner h1 {
-    font-size: 3.5vw;
+    font-size: 7vw;
   }
 
-  #banner p {
-    font-size: 1.5vw;
+  #banner h2 {
+    font-size: 3.5vw;
   }
 
   #time {
@@ -202,11 +202,11 @@ body, html {
 
 @media (max-width: 768px) {
   #banner h1 {
-    font-size: 3vw;
+    font-size: 6vw;
   }
 
-  #banner p {
-    font-size: 1.5vw;
+  #banner h2 {
+    font-size: 3vw;
   }
 
   #time {
@@ -240,11 +240,11 @@ body, html {
 
 @media (max-width: 480px) {
   #banner h1 {
-    font-size: 2.5vw;
+    font-size: 5vw;
   }
 
-  #banner p {
-    font-size: 1.5vw;
+  #banner h2 {
+    font-size: 2.5vw;
   }
 
   #time {
@@ -359,13 +359,13 @@ body, html {
 
 #banner h1 {
   margin: 0;
-  font-size: 4vw;
+  font-size: 8vw;
 }
 
 #banner p {
   margin: 0;
   font-size: 2vw;
-  margin-bottom: 2vw;
+  margin-bottom: vw; /* Increased space for BETTER STARTS NOW */
 }
 
 #result-container {
