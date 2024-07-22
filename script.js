@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('div');
       img.style.backgroundImage = `url(${currentImage})`;
       img.style.backgroundPosition = `${(i % 3) * -cellWidth}px ${Math.floor(i / 3) * -cellHeight}px`;
-      img.style.width = `${cellWidth}px`;
-      img.style.height = `${cellHeight}px`;
+      img.style.width = '100%';
+      img.style.height = '100%';
       img.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
       cell.appendChild(img);
       puzzleGrid.appendChild(cell);

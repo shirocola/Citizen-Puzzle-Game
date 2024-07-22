@@ -11,6 +11,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* Add this line */
 }
 
 #start-container, #game-container, #result-container, #discount-container {
@@ -24,8 +25,15 @@ body, html {
 }
 
 #start-text {
+  font-size: 2vw;
+  color: white;
+  padding: 1vw 2vw;
+  border: 2px solid white;
+  border-radius: 2vw;
+  background-color: transparent;
   animation: blink 1s step-start infinite;
   cursor: pointer;
+  font-weight: bold;
 }
 
 @keyframes blink {
@@ -37,21 +45,25 @@ body, html {
 /* Banner styling for CITIZEN and Better starts now */
 #banner {
   text-align: center;
-  margin-bottom: 0; /* Removed bottom margin */
+  margin-bottom: 0;
   position: relative;
-  top: 0; /* Adjusted to position it lower from the top */
+  top: 0;
   width: 100%;
+  z-index: 2;
 }
 
 #banner h1 {
   margin: 0;
-  font-size: 72px;
-  margin-bottom: 10px; /* Added margin to create a gap between CITIZEN and Better starts now */
+  font-size: 4vw;
+  margin-bottom: 1vw;
+  font-weight: bold;
 }
 
 #banner p {
   margin: 0;
-  font-size: 24px;
+  font-size: 2vw;
+  margin-bottom: 2vw;
+  font-weight: normal;
 }
 
 /* Header styling for Time */
@@ -59,21 +71,21 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px; /* Reduced margin to control the gap between "Better starts now" and "Time" */
+  margin-top: 1vh;
 }
 
 #time {
-  font-size: 32px;
-  color: white; /* Make the "Time" text white */
-  margin-right: 10px; /* Add some space between "Time" and the oval */
+  font-size: 3vw;
+  color: white;
+  margin-right: 1vw;
 }
 
 #time-count {
   background: white;
   color: black;
-  padding: 10px 40px; /* Adjust the padding for longer horizontal and shorter vertical */
-  border-radius: 30px;
-  font-size: 32px;
+  padding: 1vh 4vw;
+  border-radius: 3vh;
+  font-size: 3vw;
 }
 
 #game-screen {
@@ -81,7 +93,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 2vh;
   width: 100%;
 }
 
@@ -96,18 +108,18 @@ body, html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 1px;
+  gap: 0.3vh;
   background-color: transparent;
   touch-action: none;
-  width: 450px;
-  height: 600px;
-  margin: 20px auto;
+  width: 60vw;
+  height: 40vh;
+  margin: 1vh auto;
 }
 
 .grid-cell {
   width: 100%;
   height: 100%;
-  border: 1px solid white;
+  border: 0.1vh solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +128,7 @@ body, html {
 .puzzle-piece {
   width: 100%;
   height: 100%;
-  background-size: 450px 600px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   cursor: pointer;
   transition: transform 0.3s;
@@ -133,44 +145,44 @@ body, html {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 2vh;
 }
 
 #piece-pile {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.3vh;
   background-color: transparent;
-  max-width: 100%; /* Ensure it doesn't exceed the container width */
-  height: 200px;
+  width: 80vw;
+  height: 18vh;
   touch-action: none;
-  margin: 0 auto; /* Centering the piece-pile */
-  justify-content: center; /* Center the grid */
+  margin: 0 auto;
+  justify-content: center;
 }
 
 /* Responsive styles */
 @media (max-width: 1024px) {
   #banner h1 {
-    font-size: 28px;
+    font-size: 3.5vw;
   }
 
   #banner p {
-    font-size: 14px;
+    font-size: 1.5vw;
   }
 
   #time {
-    font-size: 20px;
+    font-size: 3vw;
   }
 
   #time-count {
-    font-size: 20px;
-    padding: 5px 30px;
+    font-size: 3vw;
+    padding: 1vh 3vw;
   }
 
   #puzzle-grid {
-    width: 300px;
-    height: 400px;
+    width: 55vw;
+    height: 36.67vh;
   }
 
   .grid-cell, .puzzle-piece {
@@ -179,36 +191,36 @@ body, html {
   }
 
   .puzzle-piece {
-    background-size: 300px 400px;
+    background-size: 100% 100%;
   }
 
   #piece-pile {
-    width: 400px;
-    height: 100px;
+    width: 70vw;
+    height: 16vh;
   }
 }
 
 @media (max-width: 768px) {
   #banner h1 {
-    font-size: 24px;
+    font-size: 3vw;
   }
 
   #banner p {
-    font-size: 12px;
+    font-size: 1.5vw;
   }
 
   #time {
-    font-size: 18px;
+    font-size: 2.5vw;
   }
 
   #time-count {
-    font-size: 18px;
-    padding: 5px 20px;
+    font-size: 2.5vw;
+    padding: 1vh 2.5vw;
   }
 
   #puzzle-grid {
-    width: 240px;
-    height: 320px;
+    width: 50vw;
+    height: 33.33vh;
   }
 
   .grid-cell, .puzzle-piece {
@@ -217,36 +229,36 @@ body, html {
   }
 
   .puzzle-piece {
-    background-size: 240px 320px;
+    background-size: 100% 100%;
   }
 
   #piece-pile {
-    width: 320px;
-    height: 80px;
+    width: 65vw;
+    height: 15vh;
   }
 }
 
 @media (max-width: 480px) {
   #banner h1 {
-    font-size: 20px;
+    font-size: 2.5vw;
   }
 
   #banner p {
-    font-size: 10px;
+    font-size: 1.5vw;
   }
 
   #time {
-    font-size: 16px;
+    font-size: 2vw;
   }
 
   #time-count {
-    font-size: 16px;
-    padding: 5px 15px;
+    font-size: 2vw;
+    padding: 0.5vh 2vw;
   }
 
   #puzzle-grid {
-    width: 180px;
-    height: 240px;
+    width: 45vw;
+    height: 30vh;
   }
 
   .grid-cell, .puzzle-piece {
@@ -255,12 +267,12 @@ body, html {
   }
 
   .puzzle-piece {
-    background-size: 180px 240px;
+    background-size: 100% 100%;
   }
 
   #piece-pile {
-    width: 240px;
-    height: 60px;
+    width: 60vw;
+    height: 12vh;
   }
 }
 
@@ -277,19 +289,19 @@ body, html {
 }
 
 #discount-container h1 {
-  font-size: 36px;
+  font-size: 3.6vh;
   margin: 0;
-  padding-top: 50px;
+  padding-top: 5vh;
 }
 
 #discount-container p {
-  font-size: 16px;
-  margin: 10px 0;
+  font-size: 1.6vh;
+  margin: 1vh 0;
 }
 
 #discount-container h2 {
-  font-size: 72px;
-  margin: 20px 0;
+  font-size: 7.2vh;
+  margin: 2vh 0;
 }
 
 /* Image loop page styles */
@@ -297,8 +309,8 @@ body, html {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -306,19 +318,91 @@ body, html {
 }
 
 #image-loop img {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
 }
 
 #video-container, #image-loop-container img {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
 #video-container video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Result page styles */
+#result-container {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#result-message {
+  font-size: 8vw;
+  font-weight: bold;
+  margin: 1vw 0;
+}
+
+#banner {
+  text-align: center;
+}
+
+#banner h1 {
+  margin: 0;
+  font-size: 4vw;
+}
+
+#banner p {
+  margin: 0;
+  font-size: 2vw;
+  margin-bottom: 2vw;
+}
+
+#result-container {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#result-message {
+  z-index: 2;
+  font-size: 8vw;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  font-weight: bold;
+}
+
+#result-container.win::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: url('assets/confetti.gif') center center no-repeat;
+  background-size: cover;
+  z-index: 1;
+  opacity: 0.5; /* Adjust this value if necessary */
+}
+
+#result-container.win #banner,
+#result-container.win #result-message {
+  z-index: 2;
+  position: relative;
 }
