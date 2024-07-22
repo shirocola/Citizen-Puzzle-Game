@@ -7,30 +7,52 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="image-loop">
-    <img id="loop-image" src="" alt="Image Loop">
+  <div id="video-container">
+    <video id="loop-video" autoplay muted>
+      <source src="assets/TSUYOSA_B_20240422.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div id="image-loop-container" style="display: none;">
+    <img id="loop-image" src="assets/loopwatch1.jpg" alt="Loop Image">
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const images = [
-        'assets/loopwatch1.jpg',
-        'assets/loopwatch2.png',
-        'assets/loopwatch3.jpg',
-        'assets/loopwatch4.jpg'
-      ];
+      const images = ['assets/loopwatch1.jpg', 'assets/loopwatch2.jpg', 'assets/loopwatch3.jpg', 'assets/loopwatch4.jpg'];
+      let currentIndex = 0;
+      let intervalId;
 
-      let currentImageIndex = 0;
-      const loopImage = document.getElementById('loop-image');
-
-      function showNextImage() {
-        loopImage.src = images[currentImageIndex];
-        currentImageIndex = (currentImageIndex + 1) % images.length;
+      function changeImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        document.getElementById('loop-image').src = images[currentIndex];
+        if (currentIndex === 0) {
+          clearInterval(intervalId);
+          restartLoop();
+        }
       }
 
-      showNextImage();
-      setInterval(showNextImage, 5000);
+      function restartLoop() {
+        imageLoopContainer.style.display = 'none';
+        videoContainer.style.display = 'block';
+        loopVideo.currentTime = 0;
+        loopVideo.play();
+      }
 
-      loopImage.addEventListener('click', () => {
+      const loopVideo = document.getElementById('loop-video');
+      const videoContainer = document.getElementById('video-container');
+      const imageLoopContainer = document.getElementById('image-loop-container');
+
+      loopVideo.addEventListener('ended', () => {
+        videoContainer.style.display = 'none';
+        imageLoopContainer.style.display = 'block';
+        intervalId = setInterval(changeImage, 5000);
+      });
+
+      videoContainer.addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      imageLoopContainer.addEventListener('click', () => {
         window.location.href = 'index.html';
       });
     });
