@@ -14,6 +14,7 @@
       <p>BETTER STARTS NOW</p>
     </div>
     <h1 id="result-message"></h1>
+    <img id="lose-image" src="assets/Lost.png" alt="You Lose" style="display: none;">
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +22,8 @@
       const result = params.get('result');
       const resultMessage = document.getElementById('result-message');
       const confettiBackground = document.getElementById('confetti-background');
+      const loseImage = document.getElementById('lose-image');
+      const banner = document.getElementById('banner');
 
       if (result === 'win') {
         resultMessage.textContent = 'YOU WIN';
@@ -29,7 +32,9 @@
           window.location.href = 'discount.html';
         }, 12000); // Redirect to discount page after 12 seconds
       } else {
-        resultMessage.textContent = 'YOU LOSE';
+        resultMessage.style.display = 'none';
+        banner.style.display = 'none';
+        loseImage.style.display = 'block';
         setTimeout(() => {
           window.location.href = 'index.html';
         }, 3000); // Redirect to start page after 3 seconds
