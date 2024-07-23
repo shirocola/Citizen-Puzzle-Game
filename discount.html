@@ -8,15 +8,10 @@
 </head>
 <body>
   <div id="discount-container">
-    <h1>CITIZEN</h1>
-    <p>BETTER STARTS NOW</p>
-    <p>You've received a</p>
-    <h2>5%</h2>
-    <p>Discount on purchasing a CITIZEN from today until <b>August 13th.</b></p>
-    <p>Please take a photo screenshot as evidence.</p>
+    <img id="discount-image" src="assets/Discount.png" alt="5% Discount">
   </div>
   <script>
-    document.addEventListener('click', () => {
+    document.getElementById('discount-image').addEventListener('click', () => {
       window.location.href = 'index.html';
     });
   </script>

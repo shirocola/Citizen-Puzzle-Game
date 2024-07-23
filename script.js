@@ -5,20 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const timeCount = document.getElementById('time-count');
 
   const images = [ 
-    'assets/watch1ja.jpg', 
-    'assets/watch2ja.jpg', 
-    'assets/watch3ja.jpg', 
-    'assets/watch4ja.jpg' 
+    'assets/Game-1.png', 
+    'assets/Game-2.png', 
+    'assets/Game-3.png', 
+    'assets/Game-4.png' 
   ];
 
   let score = 0;
-  let timeLeft = 120;
+  let timeLeft = 90;
   let timer;
   let currentImage;
 
   function startGame() {
     score = 0;
-    timeLeft = 120;
+    timeLeft = 90;
     updateTime();
     showRandomImage();
   }
@@ -27,70 +27,72 @@ document.addEventListener('DOMContentLoaded', () => {
     currentImage = images[Math.floor(Math.random() * images.length)];
     piecePile.innerHTML = '';
     puzzleGrid.innerHTML = '';
+    puzzleGrid.classList.add('hidden-border');
+
+    const fullImageDiv = document.createElement('div');
+    fullImageDiv.id = 'full-image';
+    fullImageDiv.style.backgroundImage = `url(${currentImage})`;
+    fullImageDiv.style.backgroundSize = 'cover';
+    fullImageDiv.style.backgroundPosition = 'center';
+    puzzleGrid.appendChild(fullImageDiv);
 
     const cellWidth = puzzleGrid.clientWidth / 3;
     const cellHeight = puzzleGrid.clientHeight / 4;
 
-    for (let i = 0; i < 12; i++) {
-      const cell = document.createElement('div');
-      cell.classList.add('grid-cell');
-      const img = document.createElement('div');
-      img.style.backgroundImage = `url(${currentImage})`;
-      img.style.backgroundPosition = `${(i % 3) * -cellWidth}px ${Math.floor(i / 3) * -cellHeight}px`;
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
-      cell.appendChild(img);
-      puzzleGrid.appendChild(cell);
-    }
     setTimeout(() => {
-      startTimer();
-      createPuzzle(cellWidth, cellHeight);
-    }, 3000);
-  }
+      fullImageDiv.style.display = 'none'; // Hide the full image
+      puzzleGrid.classList.remove('hidden-border'); // Show borders after delay
 
-  function createPuzzle(cellWidth, cellHeight) {
+      // Create the puzzle pieces
+      createPuzzle(cellWidth, cellHeight);
+      startTimer();
+    }, 3000);
+}
+
+function createPuzzle(cellWidth, cellHeight) {
     puzzleGrid.innerHTML = '';
     piecePile.innerHTML = '';
 
     const pieces = [];
     for (let i = 0; i < 12; i++) {
-      pieces.push(i);
+        pieces.push(i);
     }
 
     pieces.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < 12; i++) {
-      const cell = document.createElement('div');
-      cell.classList.add('grid-cell');
-      cell.dataset.order = i;
-      cell.style.width = `${cellWidth}px`;
-      cell.style.height = `${cellHeight}px`;
-      puzzleGrid.appendChild(cell);
+        const cell = document.createElement('div');
+        cell.classList.add('grid-cell');
+        cell.dataset.order = i;
+        cell.style.width = `${cellWidth}px`;
+        cell.style.height = `${cellHeight}px`;
+        puzzleGrid.appendChild(cell);
 
-      const piece = document.createElement('div');
-      piece.classList.add('puzzle-piece');
-      piece.style.backgroundImage = `url(${currentImage})`;
-      piece.style.backgroundPosition = `${(pieces[i] % 3) * -cellWidth}px ${Math.floor(pieces[i] / 3) * -cellHeight}px`;
-      piece.style.width = `${cellWidth}px`;
-      piece.style.height = `${cellHeight}px`;
-      piece.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
-      piece.dataset.order = pieces[i];
-      piece.draggable = true;
-      piecePile.appendChild(piece);
+        const piece = document.createElement('div');
+        piece.classList.add('puzzle-piece');
+        piece.style.backgroundImage = `url(${currentImage})`;
+        piece.style.backgroundPosition = `${(pieces[i] % 3) * -cellWidth}px ${Math.floor(pieces[i] / 3) * -cellHeight}px`;
+        piece.style.width = `${cellWidth}px`;
+        piece.style.height = `${cellHeight}px`;
+        piece.style.backgroundSize = `${puzzleGrid.clientWidth}px ${puzzleGrid.clientHeight}px`;
+        piece.dataset.order = pieces[i];
+        piece.draggable = true;
+        piecePile.appendChild(piece);
 
-      piece.addEventListener('dragstart', onDragStart, false);
-      piece.addEventListener('dragend', onDragEnd, false);
+        piece.addEventListener('dragstart', onDragStart, false);
+        piece.addEventListener('dragend', onDragEnd, false);
     }
 
     const cells = document.querySelectorAll('.grid-cell');
     cells.forEach(cell => {
-      cell.addEventListener('dragenter', onDragEnter, false);
-      cell.addEventListener('dragover', onDragOver, false);
-      cell.addEventListener('dragleave', onDragLeave, false);
-      cell.addEventListener('drop', onDrop, false);
+        cell.addEventListener('dragenter', onDragEnter, false);
+        cell.addEventListener('dragover', onDragOver, false);
+        cell.addEventListener('dragleave', onDragLeave, false);
+        cell.addEventListener('drop', onDrop, false);
     });
-  }
+}
+
+
 
   function onDragStart(e) {
     e.dataTransfer.setData('text', e.target.dataset.order);
