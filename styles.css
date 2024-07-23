@@ -95,7 +95,7 @@ body, html {
 #time-count {
   background: white;
   color: black;
-  padding: 1vh 4vw;
+  padding: 0vh 5vw;
   border-radius: 3vh;
   font-size: 3vw;
 }
