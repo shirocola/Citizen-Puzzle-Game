@@ -102,9 +102,9 @@ body, html {
 #time-count {
   background: white;
   color: black;
-  padding: 0.5vh 17vw;
+  padding: 0vh 15vw;
   border-radius: 3vh;
-  font-size: 3vw;
+  font-size: 5vw;
 }
 
 #game-container {
@@ -231,9 +231,9 @@ body, html {
   #time-count {
     background: white;
     color: black;
-    padding: 0.5vh 15vw;
+    padding: 0vh 15vw;
     border-radius: 3vh;
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   #puzzle-grid {
@@ -275,9 +275,9 @@ body, html {
   #time-count {
     background: white;
     color: black;
-    padding: 0.5vh 15vw;
+    padding: 0vh 15vw;
     border-radius: 3vh;
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   #puzzle-grid {
@@ -319,9 +319,9 @@ body, html {
   #time-count {
     background: white;
     color: black;
-    padding: 0.5vh 15vw;
+    padding: 0vh 15vw;
     border-radius: 3vh;
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   #puzzle-grid {
