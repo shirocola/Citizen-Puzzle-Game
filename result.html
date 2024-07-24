@@ -7,33 +7,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="confetti-background" style="display: none;"></div> <!-- This div will be the full-screen background for the confetti -->
   <div id="result-container">
-    <div id="banner">
-      <h1>CITIZEN</h1>
-      <p>BETTER STARTS NOW</p>
-    </div>
     <h1 id="result-message"></h1>
     <img id="lose-image" src="assets/Lost.png" alt="You Lose" style="display: none;">
+    <img id="win-gif" src="assets/Gif_Winner.gif" alt="You Win" style="display: none;">
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const result = params.get('result');
       const resultMessage = document.getElementById('result-message');
-      const confettiBackground = document.getElementById('confetti-background');
+      const winGif = document.getElementById('win-gif');
       const loseImage = document.getElementById('lose-image');
-      const banner = document.getElementById('banner');
 
       if (result === 'win') {
-        resultMessage.textContent = 'YOU WIN';
-        confettiBackground.style.display = 'block';
+        resultMessage.style.display = 'none';
+        winGif.style.display = 'block';
         setTimeout(() => {
           window.location.href = 'discount.html';
         }, 12000); // Redirect to discount page after 12 seconds
       } else {
         resultMessage.style.display = 'none';
-        banner.style.display = 'none';
         loseImage.style.display = 'block';
         setTimeout(() => {
           window.location.href = 'index.html';

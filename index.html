@@ -8,11 +8,7 @@
 </head>
 <body>
   <div id="start-container">
-    <div id="banner">
-      <h1>CITIZEN</h1>
-      <h2>BETTER STARTS NOW</h2>
-      <button id="start-text">TOUCH TO START</button>
-    </div>
+    <img id="start-image" src="assets/Citizen_Game-01.png" alt="Start Game">
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +16,7 @@
         window.location.href = 'image-loop.html';
       }, 30000);
 
-      document.getElementById('start-text').addEventListener('click', () => {
+      document.getElementById('start-image').addEventListener('click', () => {
         window.location.href = 'game.html';
       });
     });
