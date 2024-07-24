@@ -93,15 +93,16 @@ body, html {
 }
 
 #time {
-  font-size: 3vw;
+  font-size: 5vw;
+  font-weight: bold;
   color: white;
-  margin-right: 1vw;
+  margin-right: 5vw;
 }
 
 #time-count {
   background: white;
   color: black;
-  padding: 0vh 10vw;
+  padding: 0.5vh 15vw;
   border-radius: 3vh;
   font-size: 3vw;
 }
@@ -113,7 +114,7 @@ body, html {
   justify-content: center;
   align-items: center;
   position: relative;
-  background: url('assets/Citizen_Game-10.png') center center no-repeat; /* Background image */
+  background: url('assets/Game_background.png') center center no-repeat; /* Background image */
   background-size: cover; /* Cover the whole container */
 }
 
