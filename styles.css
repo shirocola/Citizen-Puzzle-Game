@@ -164,14 +164,18 @@ body, html {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, border-color 0.3s;
   touch-action: none;
   user-select: none;
 }
 
+.puzzle-piece.selected {
+  border: 2px solid yellow;
+  transform: scale(1.1);
+}
+
 .hidden-border .grid-cell {
   border: none;
-
 }
 
 #full-image {
@@ -184,7 +188,6 @@ body, html {
   background-position: center;
   z-index: 2;
 }
-
 
 .dragging {
   opacity: 0.5;
@@ -365,7 +368,7 @@ body, html {
   justify-content: center;
   height: 100vh;
   position: fixed;
-  top : 0;
+  top: 0;
   left: 0;
 }
 
@@ -489,7 +492,7 @@ body, html {
   display: block; /* Show only when win */
 }
 
-#lose-image, #win-gif{
+#lose-image, #win-gif {
   position: fixed;
   top: 0;
   left: 0;
