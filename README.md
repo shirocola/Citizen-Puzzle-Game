@@ -8,6 +8,7 @@ This project is an offline jigsaw puzzle game designed to be used on a vertical 
 - **Full-Screen Mode**: The game runs in full-screen mode for an immersive experience.
 - **User-Friendly Interface**: Simple and intuitive design to cater to users of all ages.
 - **Prevent Two-Finger Right Click**: Prevents two-finger right-click to avoid bad UX on touch screens.
+- **Vertical Orientation Support**: Optimized for vertical monitors, tablets, and phones to ensure a great user experience on such devices.
 
 ## User Story
 
@@ -25,7 +26,7 @@ As a user, I want to play a jigsaw puzzle game on a large vertical touch screen 
 
 ### Prerequisites
 
-- A 43-inch vertical touch screen monitor
+- A 43-inch vertical touch screen monitor, tablet, or phone
 - A computer with a web browser (preferably Chrome)
 - Uniform Server for running the project offline
 
@@ -62,4 +63,3 @@ As a user, I want to play a jigsaw puzzle game on a large vertical touch screen 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
