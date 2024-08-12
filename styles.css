@@ -19,7 +19,8 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Hide overflow to prevent scrolling */
+  flex-direction: column; /* Ensuring vertical layout */
+  overflow: hidden;
 }
 
 * {
@@ -34,11 +35,11 @@ body, html {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh; /* Ensure containers take up full height */
+  height: 100vh; 
 }
 
 #start-text {
-  font-size: 3.5vw; /* Adjusted size for TOUCH TO START */
+  font-size: 3.5vw;
   color: black;
   padding: 1vw 2vw;
   border: 2px solid white;
@@ -52,7 +53,7 @@ body, html {
 #start-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container while maintaining its aspect ratio */
+  object-fit: cover;
 }
 
 @keyframes blink {
@@ -61,7 +62,6 @@ body, html {
   }
 }
 
-/* Banner styling for CITIZEN and Better starts now */
 #banner {
   text-align: center;
   margin-bottom: 0;
@@ -72,19 +72,18 @@ body, html {
 
 #banner h1 {
   margin: 0;
-  font-size: 8vw; /* Adjusted size for CITIZEN */
-  margin-bottom: 3.5vw; /* Increased space for BETTER STARTS NOW */
+  font-size: 8vw;
+  margin-bottom: 3.5vw;
   font-weight: bold;
 }
 
 #banner h2 {
   margin: 0;
-  font-size: 4vw; /* Adjusted size for BETTER STARTS NOW */
+  font-size: 4vw;
   margin-bottom: 3vw;
   font-weight: normal;
 }
 
-/* Header styling for Time */
 #header {
   display: flex;
   justify-content: center;
@@ -114,8 +113,8 @@ body, html {
   justify-content: center;
   align-items: center;
   position: relative;
-  background: url('assets/Game_background.png') center center no-repeat; /* Background image */
-  background-size: cover; /* Cover the whole container */
+  background: url('assets/Game_background.png') center center no-repeat;
+  background-size: cover;
 }
 
 #game-screen {
@@ -134,6 +133,7 @@ body, html {
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-direction: column; /* Ensuring vertical layout */
 }
 
 #puzzle-grid {
@@ -226,16 +226,10 @@ body, html {
 
   #time {
     font-size: 5vw;
-    font-weight: bold;
-    color: white;
-    margin-right: 5vw;
   }
 
   #time-count {
-    background: white;
-    color: black;
     padding: 0vh 15vw;
-    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -247,10 +241,6 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
-  }
-
-  .puzzle-piece {
-    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -270,16 +260,10 @@ body, html {
 
   #time {
     font-size: 5vw;
-    font-weight: bold;
-    color: white;
-    margin-right: 5vw;
   }
 
   #time-count {
-    background: white;
-    color: black;
     padding: 0vh 15vw;
-    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -291,10 +275,6 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
-  }
-
-  .puzzle-piece {
-    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -314,16 +294,10 @@ body, html {
 
   #time {
     font-size: 5vw;
-    font-weight: bold;
-    color: white;
-    margin-right: 5vw;
   }
 
   #time-count {
-    background: white;
-    color: black;
     padding: 0vh 15vw;
-    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -335,10 +309,6 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
-  }
-
-  .puzzle-piece {
-    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -375,7 +345,7 @@ body, html {
 #discount-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container */
+  object-fit: cover;
 }
 
 #discount-container h1 {
@@ -404,6 +374,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* Ensuring vertical layout */
 }
 
 #image-loop img {
@@ -454,7 +425,7 @@ body, html {
 #banner p {
   margin: 0;
   font-size: 2.5vw;
-  margin-bottom: vw; /* Increased space for BETTER STARTS NOW */
+  margin-bottom: vw;
 }
 
 #result-container {
@@ -485,11 +456,11 @@ body, html {
   background: url('assets/confetti.gif') center center no-repeat;
   background-size: cover;
   z-index: 1;
-  display: none; /* Default is hidden, shown only when win */
+  display: none;
 }
 
 #result-container.win #confetti-background {
-  display: block; /* Show only when win */
+  display: block;
 }
 
 #lose-image, #win-gif {
@@ -498,6 +469,5 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container while maintaining its aspect ratio */
-  z-index: 1;
+  object-fit: cover;
 }
