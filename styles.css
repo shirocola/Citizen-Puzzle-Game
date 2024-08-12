@@ -10,24 +10,36 @@ body, html {
   padding: 0;
   font-family: 'MinionVariableConcept', Arial, sans-serif;
   height: 100vh;
+  width: 100vw;
   background: url('assets/Background.png') center center no-repeat;
   background-size: cover;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Ensuring vertical layout */
   overflow: hidden;
 }
 
-* {
-  font-family: 'MinionVariableConcept', Arial, sans-serif;
+.wrapper {
+  width: 100vw;
+  height: calc(100vw * 1.5); /* Set height to 1.5 times the width */
+  max-height: 100vh;
+  max-width: calc(100vh / 1.5); /* Ensure max width fits within vertical aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transform-origin: top left;
 }
 
-#start-container, #game-container, #result-container, #discount-container {
+/* Scale down the wrapper to fit into the available viewport when the aspect ratio is wide */
+@media (min-aspect-ratio: 3/2) {
+  .wrapper {
+    transform: scale(calc(100vh / (100vw * 1.5)));
+  }
+}
+
+.container {
   text-align: center;
   color: white;
   display: flex;
@@ -35,7 +47,10 @@ body, html {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh; 
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #start-text {
@@ -133,7 +148,7 @@ body, html {
   justify-content: center;
   align-items: center;
   width: 100%;
-  flex-direction: column; /* Ensuring vertical layout */
+  flex-direction: column;
 }
 
 #puzzle-grid {
@@ -374,7 +389,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Ensuring vertical layout */
+  flex-direction: column;
 }
 
 #image-loop img {
@@ -425,7 +440,6 @@ body, html {
 #banner p {
   margin: 0;
   font-size: 2.5vw;
-  margin-bottom: vw;
 }
 
 #result-container {
