@@ -1,112 +1,4 @@
-@font-face {
-  font-family: 'MinionVariableConcept';
-  src: url('fonts/MinionVariableConcept-Roman.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
 
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'MinionVariableConcept', Arial, sans-serif;
-  height: 100vh;
-  width: 100vw;
-  background: url('assets/Background.png') center center no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.wrapper {
-  width: 100vw;
-  height: calc(100vw * 1.5); /* Set height to 1.5 times the width */
-  max-height: 100vh;
-  max-width: calc(100vh / 1.5); /* Ensure max width fits within vertical aspect ratio */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  transform-origin: top left;
-}
-
-/* Scale down the wrapper to fit into the available viewport when the aspect ratio is wide */
-@media (min-aspect-ratio: 3/2) {
-  .wrapper {
-    transform: scale(calc(100vh / (100vw * 1.5)));
-  }
-}
-
-.container {
-  text-align: center;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#start-text {
-  font-size: 3.5vw;
-  color: black;
-  padding: 1vw 2vw;
-  border: 2px solid white;
-  border-radius: 2vw;
-  background-color: white;
-  animation: blink 1s step-start infinite;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-#start-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-#banner {
-  text-align: center;
-  margin-bottom: 0;
-  position: relative;
-  width: 100%;
-  z-index: 2;
-}
-
-#banner h1 {
-  margin: 0;
-  font-size: 8vw;
-  margin-bottom: 3.5vw;
-  font-weight: bold;
-}
-
-#banner h2 {
-  margin: 0;
-  font-size: 4vw;
-  margin-bottom: 3vw;
-  font-weight: normal;
-}
-
-#header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1vh;
-}
-
-#time {
   font-size: 5vw;
   font-weight: bold;
   color: white;
@@ -128,8 +20,8 @@ body, html {
   justify-content: center;
   align-items: center;
   position: relative;
-  background: url('assets/Game_background.png') center center no-repeat;
-  background-size: cover;
+  background: url('assets/Game_background.png') center center no-repeat; /* Background image */
+  background-size: cover; /* Cover the whole container */
 }
 
 #game-screen {
@@ -148,7 +40,6 @@ body, html {
   justify-content: center;
   align-items: center;
   width: 100%;
-  flex-direction: column;
 }
 
 #puzzle-grid {
@@ -241,10 +132,16 @@ body, html {
 
   #time {
     font-size: 5vw;
+    font-weight: bold;
+    color: white;
+    margin-right: 5vw;
   }
 
   #time-count {
+    background: white;
+    color: black;
     padding: 0vh 15vw;
+    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -256,6 +153,10 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
+  }
+
+  .puzzle-piece {
+    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -275,10 +176,16 @@ body, html {
 
   #time {
     font-size: 5vw;
+    font-weight: bold;
+    color: white;
+    margin-right: 5vw;
   }
 
   #time-count {
+    background: white;
+    color: black;
     padding: 0vh 15vw;
+    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -290,6 +197,10 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
+  }
+
+  .puzzle-piece {
+    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -309,10 +220,16 @@ body, html {
 
   #time {
     font-size: 5vw;
+    font-weight: bold;
+    color: white;
+    margin-right: 5vw;
   }
 
   #time-count {
+    background: white;
+    color: black;
     padding: 0vh 15vw;
+    border-radius: 3vh;
     font-size: 5vw;
   }
 
@@ -324,6 +241,10 @@ body, html {
   .grid-cell, .puzzle-piece {
     width: 100%;
     height: 100%;
+  }
+
+  .puzzle-piece {
+    background-size: 100% 100%;
   }
 
   #piece-pile {
@@ -360,7 +281,7 @@ body, html {
 #discount-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensure the image covers the entire container */
 }
 
 #discount-container h1 {
@@ -389,7 +310,6 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 #image-loop img {
@@ -440,6 +360,7 @@ body, html {
 #banner p {
   margin: 0;
   font-size: 2.5vw;
+  margin-bottom: vw; /* Increased space for BETTER STARTS NOW */
 }
 
 #result-container {
@@ -470,11 +391,11 @@ body, html {
   background: url('assets/confetti.gif') center center no-repeat;
   background-size: cover;
   z-index: 1;
-  display: none;
+  display: none; /* Default is hidden, shown only when win */
 }
 
 #result-container.win #confetti-background {
-  display: block;
+  display: block; /* Show only when win */
 }
 
 #lose-image, #win-gif {
@@ -483,5 +404,6 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensure the image covers the entire container while maintaining its aspect ratio */
+  z-index: 1;
 }
